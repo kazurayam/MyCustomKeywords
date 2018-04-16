@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+   <description>My response to https://forum.katalon.com/discussion/6133/verify-the-href-value-of-a-link#latest</description>
+   <name>GoogleImgTest</name>
+   <tag></tag>
+   <UUID>8d37aab2-6fae-4935-9748-226d8e52dbad</UUID>
+   <pageLoadTimeout>30</pageLoadTimeout>
+</Project>
