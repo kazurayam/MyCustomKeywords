@@ -5,7 +5,7 @@ A Katalon Studio project which verifies if \<img src="..."> is associated with a
 
 This is a simple [Katalon Studio](https://www.katalon.com/) project for demonstration purpose. You can check this out onto your PC and execute with your Katalon Studio.
 
-This project proposes a Custom Keyword `verifyUrlAccessibility(String url)`. The keyword requires an String argument as URL. The URL could be, for example, src attribute of \<img src="...."> tag or href attribute of \<a href="..."> tag. The keyword internally execute HTTP GET request and check the response. If the HTTP Status code is 200 OK, then the keyword returns true: Yes, this URL is accessible. Otherwise false: No, this URL is NOT accessible.
+This project proposes a Custom Keyword `verifyUrlAccessibility(String url)`. The keyword requires a String argument as URL. The URL could be, for example, src attribute of \<img src="...."> tag or href attribute of \<a href="..."> tag. The keyword internally execute HTTP GET request and check the response. If the HTTP Status code is 200 OK, then the keyword returns true: Yes, this URL is accessible. Otherwise false: No, this URL is NOT accessible.
 
 Provided with `verifyUrlAccessibility(String url)` in your Katalon Studio project, you can make sure your web site broken-link free. You can assert that <a> tags are successfully linked to pages, and <img> tags are associated with image entities.
 

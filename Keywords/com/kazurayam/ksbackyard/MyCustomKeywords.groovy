@@ -46,7 +46,13 @@ public class MyCustomKeywords {
             httpGet.setConfig(createProxyConfig())
         }
         CloseableHttpResponse response1 = httpclient.execute(httpGet)
-        return makeMyJudgement(urlString, response1)
+        boolean result = makeJudgement(response1)
+        if (result) {
+            KeywordUtil.markPassed("${urlString} is accessible")
+        } else {
+            KeywordUtil.markFailed("Unable to get access to ${urlString}")
+        }
+        return result
     }
     
     /**
@@ -54,7 +60,7 @@ public class MyCustomKeywords {
      * @param response
      * @return
      */
-    private boolean makeMyJudgement(String urlString, CloseableHttpResponse response) {
+    private boolean makeJudgement(CloseableHttpResponse response) {
         int statusCode = 0
         try {
             StatusLine statusLine = response.getStatusLine()
@@ -62,15 +68,12 @@ public class MyCustomKeywords {
         } finally {
             response.close()
         }
-        if (statusCode == 200) {
-            KeywordUtil.markPassed("${urlString} is accessible")
-            return true
-        } else {
-            KeywordUtil.markFailed("Unable to get access to ${urlString}")
-            return false
-        }
+        return (statusCode == 200) ? true : false
     }
     
+    
+
+    // check if I am behind Proxy or not
     private boolean amIBehindProxy() {
         def pi = RunConfiguration.getProxyInformation()
         if (pi.proxyOption == 'MANUAL_CONFIG' &&
