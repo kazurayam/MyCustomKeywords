@@ -30,10 +30,10 @@ However my web site is not as good as Google. It is a shame but it tends to have
 3. This demo depends on `org.apache.httpcomponents.httpclient_x.x.x.jar` and other related jars. However you do not need to worry about the dependencies. These jars are bundled in the Katalon Studio distributable.
 4. Select the Test Case `Main` and run it with whatever browser you like.
 5. The test case `Main` is supposed to fail with such message:
-`Unable to get access to https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png_!!!!!!!!!!`
+```Unable to get access to https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png_!!!!!!!!!!```
 6. I appended a string `_!!!!!!!!!` intentionally to the URL, so that the test case fails.
 7. Open the Test Case `Main` in script mode and find the following portion:
-```//def imgSrc = WebUI.getAttribute(findTestObject('Page_Google/img_hplogo'), 'src')
+```\/\/def imgSrc = WebUI.getAttribute(findTestObject('Page_Google/img_hplogo'), 'src')
 def imgSrc = WebUI.getAttribute(findTestObject('Page_Google/img_hplogo'), 'src') + "_!!!!!!!!!!!!"
 ```
 8. Uncomment the first line, and comment-out the second line. Save the code.
