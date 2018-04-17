@@ -70,4 +70,4 @@ This is a simple application of the Apache HttpClient. I learned how to use this
 
 ## Notes
 
-The URL as argument to verifyUrlAccessibility is supposed to be an absolute URL stating with `http://`` or `https://`. If the given string is a relative URL, the keyword would fail. The [`getAttribute`]()
+The URL as argument to verifyUrlAccessibility is supposed to be an absolute URL stating with `http://` or `https://`.
