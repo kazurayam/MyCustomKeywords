@@ -61,7 +61,7 @@ if (result) {
 
 This picks up the src value of a \<img> tag, and invoke custom keyword `veirfyUrlAccesibility` with URL as argument.
 This custom keyword internally makes HTTP GET request to the URL, and verifies the response.
-The custom keyword returns boolean value, so that you have a change to make if ... then ... else control after the URL verification.
+The custom keyword returns boolean value, so that you have a chance to make `if ... then ... else` control after the URL verification.
 
 ## How the custom keyword is coded
 
