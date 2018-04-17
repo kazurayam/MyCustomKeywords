@@ -31,7 +31,8 @@ However my web site is not as good as Google. It is a shame but it tends to have
 4. Select the Test Case `Main` and run it with whatever browser you like.
 5. The test case `Main` is supposed to fail with such message:
 ```
-Unable to get access to https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png_!!!!!!!!!!```
+Unable to get access to https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png_!!!!!!!!!!
+```
 6. I appended a string `_!!!!!!!!!` intentionally to the URL, so that the test case fails.
 7. Open the Test Case `Main` in script mode and find the following portion:
 ```
