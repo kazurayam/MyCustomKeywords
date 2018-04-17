@@ -29,12 +29,15 @@ However my web site is not as good as Google. It is a shame but it tends to have
 2. Start Katalon Studio and open the downloaded project.
 3. This demo depends on `org.apache.httpcomponents.httpclient_x.x.x.jar` and other related jars. However you do not need to worry about the dependencies. These jars are bundled in the Katalon Studio distributable.
 4. Select the Test Case `Main` and run it with whatever browser you like.
-5. The Main is supposed to fail with such message: `Unable to get access to https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png_!!!!!!!!!!`
-6. The trailing part of the URL `_!!!!!!!!!` is my intentional badness.
-7. Open the Test Case `Main` in script mode and find the following portion: ```//def imgSrc = WebUI.getAttribute(findTestObject('Page_Google/img_hplogo'), 'src')
-def imgSrc = WebUI.getAttribute(findTestObject('Page_Google/img_hplogo'), 'src') + "_!!!!!!!!!!!!"```
+5. The test case `Main` is supposed to fail with such message:
+`Unable to get access to https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png_!!!!!!!!!!`
+6. I appended a string `_!!!!!!!!!` intentionally to the URL, so that the test case fails.
+7. Open the Test Case `Main` in script mode and find the following portion:
+```//def imgSrc = WebUI.getAttribute(findTestObject('Page_Google/img_hplogo'), 'src')
+def imgSrc = WebUI.getAttribute(findTestObject('Page_Google/img_hplogo'), 'src') + "_!!!!!!!!!!!!"
+```
 8. Uncomment the first line, and comment-out the second line. Save the code.
-9. Run the Test Case `Main` again. This time it should succeed.
+9. Run the Test Case `Main` again. It should succeed.
 
 # Design
 
