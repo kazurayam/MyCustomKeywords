@@ -1,11 +1,11 @@
-A Katalon Studio project which verifies if <img src="..."> is actually associated with image entity
+A Katalon Studio project which verifies if \<img src="..."> is actually associated with image entity
 ====
 
 # What is this?
 
 This is a simple [Katalon Studio](https://www.katalon.com/) project for demonstration purpose. You can check this out onto your PC and execute with your Katalon Studio.
 
-This project proposes a Custome Keyword `verifyUrlAccessibility(String url)`. The keyword requires an String argument as URL. The URL could be, for example, src attribute of <img src="...."> tag or href attribute of <a href="..."> tag. The keyword internally execute HTTP GET request and check the response. If the status code is 200 OK then the keyword returns true: Yes, this URL is accessible. Otherwise false: No, this URL is NOT accessible.
+This project proposes a Custome Keyword `verifyUrlAccessibility(String url)`. The keyword requires an String argument as URL. The URL could be, for example, src attribute of \<img src="...."> tag or href attribute of \<a href="..."> tag. The keyword internally execute HTTP GET request and check the response. If the status code is 200 OK then the keyword returns true: Yes, this URL is accessible. Otherwise false: No, this URL is NOT accessible.
 
 Provided the `verifyUrlAccessibility(String url)` in your Katalon Studio project, you can make sure all of <a> tags associated with pages, <img> tags are associated with image entities.
 
@@ -21,7 +21,7 @@ the [Google Search page](https://www.google.co.jp/) contains following code snip
 Surely the `src="/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"` above is correct and associated with a nice 5-colored image entity.
 
 However my web site is not as good as Google. It tends to have broken links.
-Therefore I need to test if all the <img src="..."> tags in my web site are NOT broken,
+Therefore I need to test if all the \<img src="..."> tags in my web site are NOT broken,
 are associated with image entities. I want to do use Katalon Studio to automate the test.
 
 
@@ -55,7 +55,7 @@ if (result) {
 }
 ```
 
-This picks up the URL string of a <img> tag, call the custome keyword with URL as argument.
+This picks up the URL string of a \<img> tag, call the custome keyword with URL as argument.
 This custome keyword internally makes HTTP GET request to the URL, and verifies the response.
 The custome keyword returns boolean value, so that you have a change to make if ... then ... else control after the URL verification.
 
