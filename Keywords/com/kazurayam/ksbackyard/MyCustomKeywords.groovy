@@ -14,7 +14,7 @@ import com.kms.katalon.core.configuration.RunConfiguration
 
 public class MyCustomKeywords {
 
-	static String version_ = '0.1'
+	static String version_ = '0.2'
 	static KeywordLogger logger = new KeywordLogger()
 
 	@Keyword
