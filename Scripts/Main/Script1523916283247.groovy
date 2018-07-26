@@ -1,36 +1,25 @@
-import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
-import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
-import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
-import com.kms.katalon.core.checkpoint.CheckpointFactory as CheckpointFactory
-import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as MobileBuiltInKeywords
-import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
-import com.kms.katalon.core.model.FailureHandling as FailureHandling
-import com.kms.katalon.core.testcase.TestCase as TestCase
-import com.kms.katalon.core.testcase.TestCaseFactory as TestCaseFactory
-import com.kms.katalon.core.testdata.TestData as TestData
-import com.kms.katalon.core.testdata.TestDataFactory as TestDataFactory
-import com.kms.katalon.core.testobject.ObjectRepository as ObjectRepository
-import com.kms.katalon.core.testobject.TestObject as TestObject
-import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WSBuiltInKeywords
-import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
-import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKeywords
-import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import internal.GlobalVariable as GlobalVariable
-import org.openqa.selenium.Keys as Keys
 
+import com.kms.katalon.core.util.KeywordUtil
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+def keywordVersion = CustomKeywords.'com.kazurayam.ksbackyard.MyCustomKeywords.getVersion'()
+WebUI.comment("The version of MyCustomKeywords is ${keywordVersion}")
+
+// open a browser and navigate to the Google Search page
 WebUI.openBrowser('https://www.google.co.jp/')
+WebUI.verifyElementPresent(findTestObject('Page_Google/img_hplogo'), 10)
 
 //def imgSrc = WebUI.getAttribute(findTestObject('Page_Google/img_hplogo'), 'src')
 def imgSrc = WebUI.getAttribute(findTestObject('Page_Google/img_hplogo'), 'src') + "_!!!!!!!!!!!!"
 
+// check if the Google Logo image is displayed
 def result = CustomKeywords.'com.kazurayam.ksbackyard.MyCustomKeywords.verifyUrlAccessibility'(imgSrc)
 
 if (result) {
-    WebUI.comment(">>> do whatever you want in case <img> is proved accessible")
+    WebUI.comment(">>> <img href=\"${imgSrc}\"> has been verified accessible")
 } else {
-    WebUI.comment(">>> do whatever you want in case <img> is found inaccessible")
+    KeywordUtil.markFailed(">>> Unable to get access to ${imgSrc}")
 }
 
 WebUI.closeBrowser()
