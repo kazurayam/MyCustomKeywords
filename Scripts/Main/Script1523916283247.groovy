@@ -10,8 +10,8 @@ WebUI.comment("The version of MyCustomKeywords is ${keywordVersion}")
 WebUI.openBrowser('https://www.google.co.jp/')
 WebUI.verifyElementPresent(findTestObject('Page_Google/img_hplogo'), 10)
 
-//def imgSrc = WebUI.getAttribute(findTestObject('Page_Google/img_hplogo'), 'src')
-def imgSrc = WebUI.getAttribute(findTestObject('Page_Google/img_hplogo'), 'src') + "_!!!!!!!!!!!!"
+def imgSrc = WebUI.getAttribute(findTestObject('Page_Google/img_hplogo'), 'src')
+//def imgSrc = WebUI.getAttribute(findTestObject('Page_Google/img_hplogo'), 'src') + "_!!!!!!!!!!!!"
 
 // check if the Google Logo image is displayed
 def result = CustomKeywords.'com.kazurayam.ksbackyard.MyCustomKeywords.verifyUrlAccessibility'(imgSrc)
