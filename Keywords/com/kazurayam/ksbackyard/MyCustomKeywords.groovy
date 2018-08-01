@@ -1,10 +1,12 @@
 package com.kazurayam.ksbackyard
 
+import org.apache.http.Header
 import org.apache.http.HttpHost
+import org.apache.http.HttpResponse
 import org.apache.http.StatusLine
 import org.apache.http.client.config.RequestConfig
 import org.apache.http.client.methods.CloseableHttpResponse
-import org.apache.http.client.methods.HttpGet
+import org.apache.http.client.methods.HttpHead
 import org.apache.http.impl.client.CloseableHttpClient
 import org.apache.http.impl.client.HttpClients
 import com.kms.katalon.core.logging.KeywordLogger
@@ -23,37 +25,48 @@ public class MyCustomKeywords {
 	}
 
 	@Keyword
-	def static verifyUrlAccessibility(String urlString) {
-		CloseableHttpClient httpclient = HttpClients.createDefault()
-		HttpGet httpGet = new HttpGet(urlString)
-		if (amIBehindProxy()) {
-			httpGet.setConfig(createProxyConfig())
+	static int getHttpResponseStatus(String url) {
+		HttpResponse res = doHead(url)
+		StatusLine statusLine = res.getStatusLine()
+		int statusCode = statusLine.getStatusCode()
+		return statusCode
+	}
+
+	@Keyword
+	static String getContentType(String url) {
+		HttpResponse res = doHead(url)
+		Header[] headers = res.getAllHeaders()
+		for (Header header : headers) {
+			if (header.getName() == 'Content-Type') {
+				return header.getValue()
+			}
 		}
-		CloseableHttpResponse response1 = httpclient.execute(httpGet)
-		boolean result = makeJudgement(response1)
-		if (!result) {
-			logger.logFailed("Unable to get access to ${urlString}")
-		}
-		return result
+		return null
 	}
 
 	/**
+	 * make a HTTP GET Request to get a Response, close the response and return it to the caller
 	 * 
-	 * @param response
+	 * @param urlString
 	 * @return
 	 */
-	private static boolean makeJudgement(CloseableHttpResponse response) {
-		int statusCode = 0
-		try {
-			StatusLine statusLine = response.getStatusLine()
-			statusCode = statusLine.getStatusCode()
-		} finally {
-			response.close()
+	@Keyword
+	static HttpResponse doHead(String url) {
+		CloseableHttpClient httpclient = HttpClients.createDefault()
+		HttpHead command = new HttpHead(url)
+		if (amIBehindProxy()) {
+			command.setConfig(createProxyConfig())
 		}
-		return (statusCode == 200) ? true : false
+		CloseableHttpResponse res = null
+		try {
+			res = httpclient.execute(command)
+		} finally {
+			if (res != null) {
+				res.close()
+			}
+		}
+		return res
 	}
-
-
 
 	// check if I am behind Proxy or not
 	private static boolean amIBehindProxy() {

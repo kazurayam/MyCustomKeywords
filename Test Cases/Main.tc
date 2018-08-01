@@ -3,6 +3,6 @@
    <description></description>
    <name>Main</name>
    <tag></tag>
-   <comment></comment>
+   <comment>The version of MyCustomKeywords is $keywordVersion</comment>
    <testCaseGuid>de41f9ad-bab2-41f3-8170-a4882887f5b8</testCaseGuid>
 </TestCaseEntity>
